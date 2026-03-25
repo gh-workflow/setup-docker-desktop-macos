@@ -1,16 +1,8 @@
-name: Change Validation
+name: Test macOS Hosted
 
 "on":
   workflow_call:
-  pull_request:
-  push:
-    branches:
-      - main
   workflow_dispatch:
-
-concurrency:
-  group: change-validation-${{ github.event.pull_request.head.ref || github.ref_name }}
-  cancel-in-progress: true
 
 jobs:
   test-macos-hosted:

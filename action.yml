@@ -83,13 +83,37 @@ runs:
       run: |
         set -euo pipefail
 
-        for _ in {1..60}; do
-          if docker desktop status && docker info; then
-            exit 0
+        docker_socket="$HOME/.docker/run/docker.sock"
+
+        for i in {1..60}; do
+          printf '[%s] Wait iteration %02d/60\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" "$i"
+
+          if [ -S "$docker_socket" ]; then
+            echo "Docker socket present: $docker_socket"
+          else
+            echo "Docker socket missing: $docker_socket"
           fi
+
+          if docker desktop status; then
+            echo "docker desktop status succeeded."
+          else
+            echo "docker desktop status failed."
+            sleep 5
+            continue
+          fi
+
+          if docker info; then
+            echo "docker info succeeded."
+            exit 0
+          else
+            echo "docker info failed."
+          fi
+
           sleep 5
         done
 
+        echo "Final Docker socket state:"
+        ls -l "$HOME/.docker/run" || true
         echo "Docker Desktop did not become ready in time." >&2
         exit 1
 

@@ -3,9 +3,9 @@ name: Change Validation
 "on":
   workflow_call:
   pull_request:
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
   workflow_dispatch:
 
 concurrency:

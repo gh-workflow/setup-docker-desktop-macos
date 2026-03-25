@@ -5,6 +5,10 @@
 
 Install and start Docker Desktop on macOS GitHub Actions runners.
 
+Use this when you need Docker Desktop on macOS to test workflows or applications that depend on Docker there.
+
+Do not use this to build and publish Linux images. Use Linux runners for that.
+
 ## Usage
 
 ```yaml
@@ -45,6 +49,13 @@ jobs:
 
 GitHub-hosted macOS arm64 runners are unsupported because GitHub does not support [nested virtualization](https://docs.github.com/en/actions/reference/runners/github-hosted-runners#limitations-for-arm64-macos-runners)
 on them.
+
+## Permission caveat
+
+On GitHub-hosted macOS runners, this action does not work in jobs that grant `id-token: write`.
+In those jobs, Docker Desktop does not finish startup and `docker.sock` never appears.
+
+Workaround: call this action from a job or reusable workflow that does not grant `id-token: write`.
 
 ## License note
 

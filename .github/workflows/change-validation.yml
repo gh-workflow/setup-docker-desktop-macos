@@ -14,7 +14,7 @@ concurrency:
 
 permissions:
   contents: read
-  packages: read
+  packages: write
 
 jobs:
   test-suite:

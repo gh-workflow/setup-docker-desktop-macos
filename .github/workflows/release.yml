@@ -8,7 +8,6 @@ name: Release
 permissions:
   contents: write
   packages: write
-  id-token: write
 
 jobs:
   change-validation:

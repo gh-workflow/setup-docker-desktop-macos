@@ -94,6 +94,8 @@ runs:
             echo "Docker socket present: $docker_socket"
           else
             echo "Docker socket missing: $docker_socket"
+            sleep 5
+            continue
           fi
 
           if docker desktop status; then

@@ -70,6 +70,8 @@ runs:
 
         for _ in {1..60}; do
           if open "$docker_app"; then
+            echo "Launch request accepted. Waiting 10 seconds for Docker Desktop to settle."
+            sleep 10
             exit 0
           fi
           sleep 5

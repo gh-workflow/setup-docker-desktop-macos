@@ -2,11 +2,10 @@ name: Change Validation
 
 "on":
   workflow_call:
-# Auto-run on-push disabled to reduce costs on GH (free here, but still displayed rates for macOS are much higher)
-#  pull_request:
-#  push:
-#    branches:
-#      - main
+  pull_request:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 concurrency:
@@ -23,4 +22,31 @@ jobs:
     uses: ./.github/workflows/test-suite.yml
 
   test-macos-hosted:
-    uses: ./.github/workflows/test-macos-hosted.yml
+    name: macOS hosted smoke (${{ matrix.runner }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runner:
+          - macos-15-intel
+          - macos-26-intel
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+
+      - name: Set up Docker Desktop from main branch
+        uses: gh-workflow/setup-docker-desktop-macos@main
+        with:
+          print_diagnostics: true
+
+      - name: Validate Docker engine
+        run: docker run --rm hello-world
+
+      - name: Probe docker build backend
+        run: |
+          probe_dir="$(mktemp -d)"
+          cat > "$probe_dir/Dockerfile" <<'EOF'
+          FROM alpine:3.20
+          RUN --mount=type=bind,source=.,target=/src,readonly true
+          EOF
+          docker build -f "$probe_dir/Dockerfile" "$probe_dir"

@@ -2,7 +2,8 @@ name: Change Validation
 
 "on":
   workflow_call:
-  pull_request:
+# Auto-run on-push disabled to reduce costs on GH (free here, but still displayed rates for macOS are much higher)
+#  pull_request:
 #  push:
 #    branches:
 #      - main

@@ -38,7 +38,7 @@ jobs:
               "name: Example Setup Docker Desktop",
           ).replace(
               "gh-workflow/setup-docker-desktop-macos@main",
-              "gh-workflow/setup-docker-desktop-macos@0.0.1",
+              "gh-workflow/setup-docker-desktop-macos@0.0.1-beta",
           )
           Path("/tmp/example-main.normalized.yml").write_text(normalized, encoding="utf-8")
           PY

@@ -1,0 +1,27 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": ["**/.git/**"],
+  "words": [
+    "SCRIPTDIR",
+    "SHFMT",
+    "ZIZMOR",
+    "aicage",
+    "buildx",
+    "douglascamata",
+    "esac",
+    "joshjohanning",
+    "mktemp",
+    "multiarch",
+    "pipefail",
+    "pycache",
+    "pymarkdown",
+    "pymarkdownlnt",
+    "shfmt",
+    "softprops",
+    "toplevel",
+    "venv",
+    "virtualenv",
+    "zizmor"
+  ]
+}

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.15] - 2026-10-24
+
+### Internal
+
+- Update the test workflow to use Python 3.15.
+- Update the `pymarkdownlnt` development dependency to 0.9.41.
+
 ## [0.0.14] - 2026-10-12
 
 ### Internal

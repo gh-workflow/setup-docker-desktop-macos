@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.16] - 2026-11-22
+
+### Internal
+
+- Verify the release tag when creating GitHub releases.
+- Add a "Required Status Checks" job to the change-validation workflow for the matching repository ruleset.
+- Move linter configurations to `.github/linters/`.
+- Update the `pymarkdownlnt` development dependency to 0.9.42.
+- Update GitHub Actions dependencies used in CI:
+  - `actions/setup-python` to 7.1.0.
+  - `joshjohanning/ensure-immutable-actions` to 2.7.3.
+  - `oxsecurity/megalinter` to 10.2.0.
+  - `peter-evans/create-pull-request` to 8.1.3.
+
 ## [0.0.15] - 2026-10-24
 
 ### Internal

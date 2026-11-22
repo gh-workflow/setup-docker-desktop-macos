@@ -4,9 +4,12 @@ set -euo pipefail
 repo_root=$(git rev-parse --show-toplevel)
 cd "$repo_root"
 
-yamllint .
+# YAML
+yamllint --config-file .github/linters/.yamllint .
+
+# Markdown
 pymarkdown \
-  --config .pymarkdown.json scan \
+  --config .github/linters/.pymarkdown.json scan \
   --recurse \
   --exclude '**/.venv*/**' \
   .
